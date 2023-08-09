@@ -264,7 +264,7 @@ def plot(word,count,name):
     df, tweets = data_extract(word,count)
     result = interpret_result(df,name)
     pie_chrt =  draw_pie_chart(df)
-    import_data(tweets)
+    #import_data(tweets)
     return result, pie_chrt,df
 
 #************************************************************************
