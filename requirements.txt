@@ -1,0 +1,12 @@
+pandas
+numpy
+unidecode
+tweepy
+contractions
+pymongo
+transformers
+scipy
+matplotlib
+seaborn
+nltk
+torch
