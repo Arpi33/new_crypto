@@ -148,7 +148,7 @@ def data_extract(word,count):
 #     except:
 #         pass  """
 
-@st.experimental_memo
+@st.cache_data
 def draw_pie_chart(data):
 
     #count each sentiment
