@@ -259,7 +259,7 @@ def interpret_result(data,name):
     return msg
 
 
-@st.experimental_memo
+@st.cache_data
 def plot(word,count,name):
     df, tweets = data_extract(word,count)
     result = interpret_result(df,name)
