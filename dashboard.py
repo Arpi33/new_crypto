@@ -80,7 +80,7 @@ def model_load():
     
     return tokenizer,model,labels
 
-tokenizer,model,labels=model_load()
+#tokenizer,model,labels=model_load()
 
 def compute_sentiment(tokenizer,model,labels,review):
     k =[]
@@ -120,7 +120,8 @@ def data_extract(word,count):
         
     # Creating a dataframe from the tweets list above
     tweets_df1 = pd.DataFrame(tweets_list, columns=['Tweet', 'created_at'])
-    
+
+    tokenizer,model,labels=model_load()
     tweets_df1['sentiment'] = tweets_df1['Tweet'].apply(lambda x: compute_sentiment(tokenizer,model,labels,x))  
     
     return tweets_df1, tweets   
@@ -148,7 +149,8 @@ def data_extract(word,count):
 #     except:
 #         pass  """
 
-@st.cache_data
+@st.experimental_memo
+
 def draw_pie_chart(data):
 
     #count each sentiment
@@ -259,7 +261,7 @@ def interpret_result(data,name):
     return msg
 
 
-@st.cache_data
+@st.experimental_memo
 def plot(word,count,name):
     df, tweets = data_extract(word,count)
     result = interpret_result(df,name)
@@ -272,11 +274,10 @@ def plot(word,count,name):
 
 st.set_page_config(layout="wide")
 st.markdown("<h1 style='text-align: center; color: green;marginTop: -75px'>Sentiment Analysis of Social Media data</h1>", unsafe_allow_html=True)
-
 cap = "Exploring the Impact of Social Media Data on Crypto Currency Price through Tweet Sentiment Analysis."
 
 st.markdown(f'<p style="color:#402e70;font-weight: bold;font-size:18px;border-radius:2%;font-style: italic;">{cap}</p>', unsafe_allow_html=True)
-
+#st.write("hi")
 col=st.columns(2)
 with col[0]:
         st.markdown("<h4 style= 'color: #fc036b;'>Select Your Crypto Currency </h4>", unsafe_allow_html=True)
